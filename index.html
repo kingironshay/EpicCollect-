@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EpicCollect</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body, html {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+  }
+  /* Container */
+  .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+  }
+  /* Header */
+  header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  /* Cart Icon */
+  .cart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cart svg {
+    width: 28px;
+    height: 28px;
+  }
+  .cart-count {
+    background: #ff4757;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  /* Shop Now Button */
+  .shop-now-btn {
+    background: #ff6f61;
+    border: none;
+    padding: 18px 60px;
+    border-radius: 40px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255,111,97,0.6);
+    transition: background 0.3s ease;
+  }
+  .shop-now-btn:hover {
+    background: #e85c50;
+  }
+  /* Categories Section */
+  .categories {
+    margin-top: 40px;
+    display: none;
+    max-width: 1000px;
+    width: 100%;
+    gap: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .category {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .category:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .category img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+  .category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .category p {
+    font-size: 1rem;
+    color: #ddd;
+    margin-bottom: 10px;
+  }
+  .category .price {
+    font-weight: 700;
+    color: #ff6f61;
+    font-size: 1.2rem;
+  }
+  /* Responsive */
+  @media (max-width: 700px) {
+    .categories {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>EpicCollect</header>
+
+  <div class="cart" title="Shopping Cart (0 items)">
+    <!-- Cart icon SVG -->
+    <svg fill="white" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM7.16 14l.84-2h7.5l1.8 5H8l-1.5-3zm12.84-9H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 14.67 5.48 16 7 16h12v-2h-1.42l-1.58-4z"/></svg>
+    <div class="cart-count" id="cartCount">0</div>
+  </div>
+
+  <button class="shop-now-btn" id="shopNowBtn">Shop Now</button>
+
+  <section class="categories" id="categoriesSection">
+    <!-- Category 1 -->
+    <div class="category">
+      <img src="https://ae01.alicdn.com/kf/Hbc5a824db79a4ab3a825e1a510f048cfS/Pro-Gamer-RGB-Wired-Mouse-High-Precision-6-DPI-Gaming-Mouse-USB-Computer-PC-Laptop-Mouse-For-Gamers.jpg" alt="Gaming Gear" />
+      <h3>Gaming Gear</h3>
+      <p>High performance RGB mouse and headphones</p>
+      <div class="price">From $25</div>
+    </div>
+    <!-- Category 2 -->
+    <div class="category">
+      <img src="https://ae01.alicdn.com/kf/H91eeeb5440ea4ec89c60d7e4696e6e11I/LED-Desk-Lamp-RGB-Color-Changing-Touch-Control-Table-Lamp-Reading-Work-Lights-With-USB-Charging-Port.jpg" alt="Gaming Room Decor" />
+      <h3>Gaming Room Decor</h3>
+      <p>RGB lamps and cool room decorations</p>
+      <div class="price">From $15</div>
+    </div>
+    <!-- Category 3 -->
+    <div class="category">
+      <img src="https://ae01.alicdn.com/kf/Hf1378ca1b13e43e3b3dd5278fbb218a3y/Anime-Pop-Vinyl-Figure-Collectible-Toys-Action-Figure.jpg" alt="Collector's Dolls" />
+      <h3>Collector's Dolls</h3>
+      <p>Fun Pop and Anime collectible figures</p>
+      <div class="price">From $30</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const shopNowBtn = document.getElementById('shopNowBtn');
+  const categoriesSection = document.getElementById('categoriesSection');
+
+  shopNowBtn.addEventListener('click', () => {
+    categoriesSection.style.display = categoriesSection.style.display === 'flex' ? 'none' : 'flex';
+    if (categoriesSection.style.display === 'flex') {
+      shopNowBtn.textContent = 'Close Shop';
+    } else {
+      shopNowBtn.textContent = 'Shop Now';
+    }
+  });
+</script>
+
+</body>
+</html>
